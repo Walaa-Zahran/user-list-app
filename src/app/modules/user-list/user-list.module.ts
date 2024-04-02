@@ -7,5 +7,6 @@ import { SearchComponent } from './components/search/search.component';
 @NgModule({
   declarations: [UserListComponent, SearchComponent],
   imports: [CommonModule, MatProgressSpinnerModule],
+  exports: [UserListComponent, SearchComponent],
 })
 export class UserListModule {}

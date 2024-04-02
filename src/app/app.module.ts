@@ -9,7 +9,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CacheInterceptorService } from './core/interceptors/cache-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { UserListModule } from './modules/user-list/user-list.module';
 import { CoreModule } from './core/core.module';
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +17,6 @@ import { CoreModule } from './core/core.module';
     NgbModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    UserListModule,
     HttpClientModule,
     CoreModule,
   ],
