@@ -5,7 +5,13 @@ import { MainBodyComponent } from './components/main-body/main-body.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SharedModule } from '../shared/modules/shared.module';
-const components = [MainBodyComponent, FooterComponent, NavbarComponent];
+import { PaginationComponent } from './components/pagination/pagination.component';
+const components = [
+  MainBodyComponent,
+  FooterComponent,
+  NavbarComponent,
+  PaginationComponent,
+];
 const modules = [SharedModule];
 @NgModule({
   declarations: [...components],
