@@ -7,7 +7,7 @@ const components = [LoaderSpinnerComponent];
 const modules = [CommonModule, MaterialModule, RouterModule];
 @NgModule({
   declarations: [...components],
-  imports: [CommonModule],
+  imports: [CommonModule, MaterialModule],
   exports: [...components, ...modules],
 })
 export class SharedModule {}

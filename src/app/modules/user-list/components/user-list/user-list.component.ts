@@ -6,7 +6,9 @@ import {
   animate,
 } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserList } from '../../../../shared/models/user-list.interface';
+import { ApiResponse } from '../../../../shared/models/api-response.interface';
 
 @Component({
   selector: 'app-user-list',
@@ -19,14 +21,18 @@ import { Component } from '@angular/core';
     ]),
   ],
 })
-export class UserListComponent {
-  isLoading = false;
+export class UserListComponent implements OnInit {
+  user!: UserList[];
   constructor(private http: HttpClient) {}
+  ngOnInit(): void {
+    this.loadData();
+  }
   loadData() {
-    this.isLoading = true;
-    this.http.get('your-api-url').subscribe((data) => {
-      // process data
-      this.isLoading = false;
-    });
+    this.http
+      .get<ApiResponse>(`https://reqres.in/api/users`)
+      .subscribe((data) => {
+        console.log('data', data);
+        this.user = data.data;
+      });
   }
 }
