@@ -10,10 +10,12 @@ import { CacheInterceptorService } from './core/interceptors/cache-interceptor.s
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
+import { UserListModule } from './modules/user-list/user-list.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    UserListModule,
     NgbModule,
     BrowserAnimationsModule,
     AppRoutingModule,

@@ -9,7 +9,7 @@ const routes: Routes = [
     component: MainBodyComponent,
     children: [
       {
-        path: 'user-list',
+        path: '',
         component: UserListComponent,
       },
       {

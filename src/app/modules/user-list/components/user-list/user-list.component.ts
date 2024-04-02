@@ -31,8 +31,8 @@ export class UserListComponent implements OnInit {
     this.http
       .get<ApiResponse>(`https://reqres.in/api/users`)
       .subscribe((data) => {
-        console.log('data', data);
         this.user = data.data;
+        console.log('uset', this.user);
       });
   }
 }
