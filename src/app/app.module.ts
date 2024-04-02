@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { UserListModule } from './modules/user-list/user-list.module';
+import { HttpLoaderInterceptor } from './core/interceptors/http-loader.interceptor.service';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -27,6 +28,11 @@ import { UserListModule } from './modules/user-list/user-list.module';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CacheInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpLoaderInterceptor,
       multi: true,
     },
   ],

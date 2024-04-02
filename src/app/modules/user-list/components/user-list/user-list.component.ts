@@ -1,38 +1,30 @@
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-} from '@angular/animations';
-import { HttpClient } from '@angular/common/http';
+// user-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { UserList } from '../../../../shared/models/user-list.interface';
-import { ApiResponse } from '../../../../shared/models/api-response.interface';
+import { SharedService } from '../../../../shared/services/shared.service';
+import { UserServiceService } from '../../../../shared/services/user-service.service';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrl: './user-list.component.css',
-  animations: [
-    trigger('fadeIn', [
-      state('void', style({ opacity: 0 })),
-      transition(':enter', [animate('300ms ease-out', style({ opacity: 1 }))]),
-    ]),
-  ],
+  styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
-  user!: UserList[];
-  constructor(private http: HttpClient) {}
-  ngOnInit(): void {
-    this.loadData();
+  users: any[] = [];
+
+  constructor(
+    private userService: UserServiceService,
+    private sharedService: SharedService
+  ) {}
+
+  ngOnInit() {
+    this.sharedService.currentPage.subscribe((page) => {
+      this.loadUsers(page);
+    });
   }
-  loadData() {
-    this.http
-      .get<ApiResponse>(`https://reqres.in/api/users`)
-      .subscribe((data) => {
-        this.user = data.data;
-        console.log('uset', this.user);
-      });
+
+  loadUsers(page: number) {
+    this.userService.getUsers(page).subscribe((users: any) => {
+      this.users = users.data;
+    });
   }
 }

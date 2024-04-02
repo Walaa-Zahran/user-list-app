@@ -1,15 +1,29 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { NgZone } from '@angular/core';
+
 @Injectable({ providedIn: 'root' })
 export class LoaderService {
   public isLoading = new BehaviorSubject<boolean>(false);
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private ngZone: NgZone
+  ) {}
+
   show(): void {
-    document.body.className += ' ' + 'loading';
-    this.isLoading.next(true);
+    this.ngZone.run(() => {
+      document.body.className += ' ' + 'loading';
+      this.isLoading.next(true);
+      setTimeout(() => {
+        this.hide();
+      }, 10000);
+    });
   }
+
   hide(): void {
-    document.body.classList.remove('loading');
-    this.isLoading.next(false);
+    this.ngZone.run(() => {
+      document.body.classList.remove('loading');
+      this.isLoading.next(false);
+    });
   }
 }

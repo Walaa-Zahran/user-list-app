@@ -1,12 +1,14 @@
+<!-- main-body.component.html -->
 <div class="flex-container">
   <main class="bg--light-gray">
     <div class="p-0 w-100">
       <app-navbar></app-navbar>
     </div>
     <div class="routes overflow-auto w-100">
+      <!-- Ensure UserListComponent is included here -->
       <router-outlet #outletRef="outlet"></router-outlet>
     </div>
-    <app-pagination></app-pagination>
+    <app-pagination (pageChange)="onPageChange($event)"></app-pagination>
   </main>
   <app-footer></app-footer>
 </div>
