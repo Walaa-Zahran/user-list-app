@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../../../shared/services/shared.service';
 import { UserServiceService } from '../../../../shared/services/user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',

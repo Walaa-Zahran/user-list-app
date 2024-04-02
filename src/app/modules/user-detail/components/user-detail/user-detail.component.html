@@ -1,1 +1,15 @@
-<p>user-detail works!</p>
+<div class="container">
+  <div class="user-detail">
+    <h2>User Details</h2>
+    <div [hidden]="!user">
+      <p><strong>Id:</strong> {{ user.id }}</p>
+      <p><strong>First Name:</strong> {{ user.first_name }}</p>
+      <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+      <p><strong>E-mail:</strong> {{ user.email }}</p>
+      <img src="{{ user.avatar }}" />
+    </div>
+    <div [hidden]="user">
+      <p>Loading user details...</p>
+    </div>
+  </div>
+</div>

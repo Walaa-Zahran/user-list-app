@@ -7,8 +7,11 @@
     <div class="routes overflow-auto w-100">
       <!-- Ensure UserListComponent is included here -->
       <router-outlet #outletRef="outlet"></router-outlet>
+      <app-pagination
+        (pageChange)="onPageChange($event)"
+        *ngIf="!isUserDetailPage()"
+      ></app-pagination>
     </div>
-    <app-pagination (pageChange)="onPageChange($event)"></app-pagination>
   </main>
   <app-footer></app-footer>
 </div>

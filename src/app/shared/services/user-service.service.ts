@@ -16,4 +16,8 @@ export class UserServiceService {
     // Assuming you have an endpoint that supports pagination
     return this.http.get<ApiResponse[]>(`${this.apiUrl}/users?page=${page}`);
   }
+  getUser(id: number): Observable<any[]> {
+    // Assuming you have an endpoint that supports pagination
+    return this.http.get<ApiResponse[]>(`${this.apiUrl}/users/${id}`);
+  }
 }

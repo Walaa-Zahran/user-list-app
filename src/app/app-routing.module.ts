@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './modules/user-list/components/user-list/user-list.component';
 import { MainBodyComponent } from './core/components/main-body/main-body.component';
+import { UserDetailComponent } from './modules/user-detail/components/user-detail/user-detail.component';
 
 const routes: Routes = [
   {
@@ -12,13 +13,7 @@ const routes: Routes = [
         path: '',
         component: UserListComponent,
       },
-      {
-        path: 'user-detail',
-        loadChildren: () =>
-          import('./modules/user-detail/user-detail.module').then(
-            (m) => m.UserDetailModule
-          ),
-      },
+      { path: 'user-detail/:id', component: UserDetailComponent },
     ],
   },
 ];
