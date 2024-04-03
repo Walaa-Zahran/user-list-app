@@ -1,9 +1,6 @@
-// src/app/modules/user-detail/components/user-detail/user-detail.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserServiceService } from '../../../../shared/services/user-service.service';
-import { User } from '../../../../shared/models/data.interface';
 
 @Component({
   selector: 'app-user-detail',

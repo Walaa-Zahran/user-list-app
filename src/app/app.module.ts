@@ -12,13 +12,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { UserListModule } from './modules/user-list/user-list.module';
 import { HttpLoaderInterceptor } from './core/interceptors/http-loader.interceptor.service';
-import { UserDetailModule } from './modules/user-detail/user-detail.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     UserListModule,
-    UserDetailModule,
     NgbModule,
     BrowserAnimationsModule,
     AppRoutingModule,

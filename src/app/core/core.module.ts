@@ -12,10 +12,10 @@ const components = [
   NavbarComponent,
   PaginationComponent,
 ];
-const modules = [SharedModule];
+const modules = [SharedModule, CommonModule, AppRoutingModule];
 @NgModule({
   declarations: [...components],
-  imports: [CommonModule, AppRoutingModule],
   exports: [...components, ...modules],
+  imports: [...modules],
 })
 export class CoreModule {}

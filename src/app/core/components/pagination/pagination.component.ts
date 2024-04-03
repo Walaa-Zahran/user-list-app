@@ -1,4 +1,3 @@
-// pagination.component.ts
 import { Component } from '@angular/core';
 import { SharedService } from '../../../shared/services/shared.service';
 

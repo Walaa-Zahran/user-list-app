@@ -1,8 +1,6 @@
-// user-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../../../shared/services/shared.service';
 import { UserServiceService } from '../../../../shared/services/user-service.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -11,6 +9,10 @@ import { Router } from '@angular/router';
 })
 export class UserListComponent implements OnInit {
   users: any[] = [];
+  filteredUsers!: [];
+  searchTerm!: number;
+  searchResultUser: any;
+  searchedUserId!: number;
 
   constructor(
     private userService: UserServiceService,
@@ -19,13 +21,24 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.sharedService.currentPage.subscribe((page) => {
-      this.loadUsers(page);
+      this.loadUsers(page !== null ? page : 1);
     });
   }
-
+  filterUsers(): any[] {
+    if (!this.searchTerm) {
+      return this.users;
+    }
+    // Convert searchTerm to a number for comparison
+    const searchId = Number(this.searchTerm);
+    return this.users.filter((user) => user.id === searchId);
+  }
   loadUsers(page: number) {
     this.userService.getUsers(page).subscribe((users: any) => {
       this.users = users.data;
     });
+  }
+
+  onSearchResults(searchResults: any[]) {
+    this.users = searchResults;
   }
 }

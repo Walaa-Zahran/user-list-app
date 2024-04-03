@@ -1,7 +1,16 @@
-<div class="container px-4 px-lg-5" [@fadeIn]>
+<div class="container px-4 px-lg-5 py-3" [@fadeIn]>
+  <div class="search-container">
+    <input
+      class="form-control"
+      type="text"
+      (input)="filterUsers()"
+      [(ngModel)]="searchTerm"
+      placeholder="Search users..."
+    />
+  </div>
   <div *ngIf="users && users.length > 0">
     <div class="row gx-4 gx-lg-5 py-5">
-      <div class="col-md-4 mb-5" *ngFor="let userItem of users">
+      <div class="col-md-4 mb-5" *ngFor="let userItem of filterUsers()">
         <div class="card h-100">
           <div class="card-body">
             <img [src]="userItem['avatar']" alt="" />
@@ -11,12 +20,11 @@
             <h3 class="card-subtitle">ID: {{ userItem["id"] }}</h3>
           </div>
           <div class="card-footer justify-content-end d-flex">
-            <button
+            <a
               class="btn btn-primary btn-sm"
               [routerLink]="['/user-detail', userItem.id]"
+              >More Info</a
             >
-              More Info
-            </button>
           </div>
         </div>
       </div>
